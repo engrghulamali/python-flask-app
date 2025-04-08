@@ -121,5 +121,5 @@ def add_recipe():
 
 # Run the app
 if __name__ == "__main__":
-    init_db()  # Initialize the database
+    init_db()  # Initialize the db
     app.run(debug=True)
