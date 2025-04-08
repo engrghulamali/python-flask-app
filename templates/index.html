@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe App</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
-<body>
+{% extends 'layout.html' %}
+
+{% block content %}
+<section class="hero-section">
+  <div class="hero-content">
     <h1>Welcome to the Recipe App</h1>
-    <nav>
-        <a href="{{ url_for('signup') }}">Sign Up</a>
-        <a href="{{ url_for('login') }}">Login</a>
-    </nav>
-</body>
-</html>
+    <p class="lead">Discover, Cook, and Share Amazing Recipes</p>
+    <a href="{{ url_for('login') }}" class="btn get-started-btn">Get Started</a>
+  </div>
+</section>
+{% endblock %}
