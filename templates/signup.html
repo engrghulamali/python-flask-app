@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Sign Up</h1>
+    <form method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" required>
+        <label for="email">Email:</label>
+        <input type="email" name="email" required>
+        <label for="phone">Phone:</label>
+        <input type="text" name="phone" required>
+        <label for="password">Password:</label>
+        <input type="password" name="password" required>
+        <button type="submit">Sign Up</button>
+    </form>
+    <a href="{{ url_for('login') }}">Already have an account? Login</a>
+</body>
+</html>

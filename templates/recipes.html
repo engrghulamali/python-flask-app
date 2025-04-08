@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Recipes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Your Recipes</h1>
+    <ul>
+        {% for recipe in recipes %}
+            <li>
+                <strong>{{ recipe[0] }}</strong><br>
+                Ingredients: {{ recipe[1] }}<br>
+                Instructions: {{ recipe[2] }}
+            </li>
+        {% else %}
+            <p>No recipes found.</p>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('add_recipe') }}">Add New Recipe</a>
+</body>
+</html>
