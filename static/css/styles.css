@@ -1,18 +1,69 @@
-/* Global Styles */
-body, html {
-    height: 100%;
+:root {
+    --primary-color: #002B5B;     /* Deep Blue */
+    --accent-color: #00C9A7;      /* Sky Blue/Teal */
+    --highlight-color: #00F2F2;   /* Cyan */
+    --text-color: #FFFFFF;        /* White */
+    --background-color: #1c8314;  /* Charcoal Black */
+}
+
+body {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f8f9fa;
-    display: flex;
-    flex-direction: column;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Header Styles */
 header {
-    background: linear-gradient(135deg, #ff9966, #ff5e62);
+    background-color: var(--primary-color);
+    padding: 20px;
+    text-align: center;
+    color: var(--text-color);
 }
 
+nav {
+background-color: var(--accent-color);
+display: flex;
+justify-content: space-around;
+padding: 10px 0;
+}
+
+nav a {
+color: var(--text-color);
+text-decoration: none;
+font-weight: bold;
+}
+
+nav a:hover {
+color: var(--highlight-color);
+}
+
+section {
+padding: 20px;
+}
+
+button {
+background-color: var(--accent-color);
+border: none;
+color: var(--text-color);
+padding: 10px 20px;
+border-radius: 5px;
+cursor: pointer;
+}
+
+button:hover {
+background-color: var(--highlight-color);
+color: var(--primary-color);
+}
+
+.card {
+background-color: var(--primary-color);
+border: 1px solid var(--accent-color);
+padding: 15px;
+border-radius: 10px;
+margin: 10px 0;
+box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
 .navbar-brand {
     color: #fff !important;
     font-weight: bold;

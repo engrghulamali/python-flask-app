@@ -1,12 +1,25 @@
+
 {% extends 'layout.html' %}
 
 {% block content %}
-<section class="hero-section">
-  <div class="hero-content">
-    <h1>Welcome to the Recipeo App</h1>
-    <p class="lead">Explore tasty recipes and inspire your cooking skills! Whether you want quick meals or special treats, we have something for everyone.</p>
-    <p class="lead">Let's Start cooking!</p>
-    <a href="{{ url_for('login') }}" class="btn get-started-btn">Get Started</a>
-  </div>
-</section>
+<section class="hero-area">
+    <div class="hero-slides owl-carousel">
+
+        {% set bg_url = url_for('static', filename='img/bg-img/ingred-1.jpg') %}
+        <div class="single-hero-slide bg-img" style="background-image: url('{{ bg_url }}');">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                        <div class="hero-slides-content" data-animation="fadeInUp" data-delay="100ms">
+                            <h2>Welcome to the Recipeo App!</h2>
+                            <p>xplore tasty recipes and inspire your cooking skills! Whether you want quick meals or special treats, we have something for everyone.</p>
+                            <a href="{{ url_for('login') }}" class="btn delicious-btn">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>  
+
 {% endblock %}
