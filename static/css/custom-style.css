@@ -1352,6 +1352,18 @@ main {
   border-color: #887CCF; /* Green border on focus */
 }
 
+#categorySearch {
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+
+#-categorySearch:focus {
+  border-color: #887CCF; /* Green border on focus */
+}
+
 body {
   background: linear-gradient(135deg, #f3f0ff, #e6f0ff, #fef9e7);
   background-size: 300% 300%;

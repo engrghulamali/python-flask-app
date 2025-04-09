@@ -3,9 +3,19 @@
 {% block title %}Your Recipes | Recipe App{% endblock %}
 
 {% block content %}
+  {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+          <ul>
+          {% for category, message in messages %}
+              <li class="{{ category }}">{{ message }}</li>
+          {% endfor %}
+          </ul>
+      {% endif %}
+  {% endwith %}
+
     <div class="container my-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>Recommedned For You</h2>
+        <h2>Recommended For You</h2>
         <div class="col-md-4">
             <!-- Search Bar -->
             <input type="text" id="recipeSearch" class="form-control" placeholder="Search recipes..." onkeyup="searchRecipes()" />
@@ -13,7 +23,7 @@
         <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addRecipeModal">+ Add Recipe</button>
     </div>
 
-  {% if recipes %}
+    {% if recipes %}
     <div class="row g-4" id="recipeList">
         {% for recipe in recipes %}
             <div class="col-md-4">
@@ -49,72 +59,103 @@
                             <p class="mb-4">{{ recipe[8] }}</p>
                             <h6>Steps:</h6>
                             <p>{{ recipe[9] }}</p>
+
+                            <!-- Add to Favorite Button -->
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#categoryModal{{ recipe[0] }}">Add to Favorite</button>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Category Selection Modal -->
+            <div class="modal fade" id="categoryModal{{ recipe[0] }}" tabindex="-1" aria-labelledby="categoryModalLabel{{ recipe[0] }}" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <form method="POST" action="{{ url_for('add_favourite') }}">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="categoryModalLabel{{ recipe[0] }}">Select a Category</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="categorySelect">Select Category</label>
+                                    <select class="form-select" id="categorySelect{{ recipe[0] }}" name="category_id" required>
+                                        <option value="">-- Choose Category --</option>
+                                        {% for category in categories %}
+                                            <option value="{{ category[0] }}">{{ category[1] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <p id="noCategoryError{{ recipe[0] }}" class="text-danger" style="display:none;">Please create a category before adding a favorite.</p>
+                                </div>
+                                <input type="hidden" name="recipe_id" value="{{ recipe[0] }}">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Add to Favorite</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
         {% endfor %}
     </div>
-{% else %}
-    <p>No recipes found.</p>
-{% endif %}
-
-</div>
-
-<!-- Add Recipe Modal -->
-<!-- Add Recipe Modal -->
-<div class="modal fade" id="addRecipeModal" tabindex="-1" aria-labelledby="addRecipeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <form method="POST" enctype="multipart/form-data" class="modal-content" action="{{ url_for('add_recipe') }}">
-        <div class="modal-header">
-          <h5 class="modal-title" id="addRecipeModalLabel">Add New Recipe</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body row g-3">
-          <div class="col-md-6 mt-4">
-            <label class="form-label">Recipe Name</label>
-            <input type="text" name="name" class="form-control" required>
-          </div>
-          <div class="col-md-6 mt-4">
-            <label class="form-label">Cuisine</label>
-            <input type="text" name="cuisine" class="form-control" required>
-          </div>
-          <div class="col-md-6 mt-4">
-            <label class="form-label">Meal Type</label>
-            <input type="text" name="meal_type" class="form-control" required>
-          </div>
-          <div class="col-md-6 mt-4">
-            <label class="form-label">Dietary Restrictions</label>
-            <input type="text" name="dietary" class="form-control" required>
-          </div>
-          <div class="col-md-6 mt-4">
-            <label class="form-label">Difficulty Level</label>
-            <select name="difficulty" class="form-select" required>
-              <option value="">Select</option>
-              <option>Easy</option>
-              <option>Medium</option>
-              <option>Hard</option>
-            </select>
-          </div>
-          <div class="col-md-6 mt-4">
-            <label class="form-label">Recipe Image</label>
-            <input type="file" name="image" accept="image/*" class="form-control" required>
-          </div>
-          <div class="col-12 mt-4">
-            <label class="form-label">Ingredients</label>
-            <textarea name="ingredients" class="form-control" rows="2" required></textarea>
-          </div>
-          <div class="col-12 mt-4">
-            <label class="form-label">Steps</label>
-            <textarea name="steps" class="form-control" rows="3" required></textarea>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Save Recipe</button>
-        </div>
-      </form>
+    {% else %}
+        <p>No recipes found.</p>
+    {% endif %}
     </div>
-  </div>
-  
+
+    <!-- Add Recipe Modal -->
+    <div class="modal fade" id="addRecipeModal" tabindex="-1" aria-labelledby="addRecipeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <form method="POST" enctype="multipart/form-data" class="modal-content" action="{{ url_for('add_recipe') }}">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addRecipeModalLabel">Add New Recipe</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body row g-3">
+                    <div class="col-md-6 mt-4">
+                        <label class="form-label">Recipe Name</label>
+                        <input type="text" name="name" class="form-control" required>
+                    </div>
+                    <div class="col-md-6 mt-4">
+                        <label class="form-label">Cuisine</label>
+                        <input type="text" name="cuisine" class="form-control" required>
+                    </div>
+                    <div class="col-md-6 mt-4">
+                        <label class="form-label">Meal Type</label>
+                        <input type="text" name="meal_type" class="form-control" required>
+                    </div>
+                    <div class="col-md-6 mt-4">
+                        <label class="form-label">Dietary Restrictions</label>
+                        <input type="text" name="dietary" class="form-control" required>
+                    </div>
+                    <div class="col-md-6 mt-4">
+                        <label class="form-label">Difficulty Level</label>
+                        <select name="difficulty" class="form-select" required>
+                            <option value="">Select</option>
+                            <option>Easy</option>
+                            <option>Medium</option>
+                            <option>Hard</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mt-4">
+                        <label class="form-label">Recipe Image</label>
+                        <input type="file" name="image" accept="image/*" class="form-control" required>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <label class="form-label">Ingredients</label>
+                        <textarea name="ingredients" class="form-control" rows="2" required></textarea>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <label class="form-label">Steps</label>
+                        <textarea name="steps" class="form-control" rows="3" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save Recipe</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 {% endblock %}

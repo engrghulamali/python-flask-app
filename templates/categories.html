@@ -13,7 +13,11 @@
 
     <div id="categoryList">
         {% for category in categories %}
-            <div class="category-item">{{ category[1] }}</div>
+            <div class="category-item">
+              <a href="{{ url_for('category_detail', category_id=category[0]) }}">
+                {{ category[1] }}
+              </a>
+            </div>
         {% else %}
             <p>No categories found.</p>
         {% endfor %}

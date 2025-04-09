@@ -13,7 +13,11 @@
                         <div class="hero-slides-content" data-animation="fadeInUp" data-delay="100ms">
                             <h2>Welcome to the Recipeo App!</h2>
                             <p>xplore tasty recipes and inspire your cooking skills! Whether you want quick meals or special treats, we have something for everyone.</p>
-                            <a href="{{ url_for('login') }}" class="btn delicious-btn">Get Started</a>
+                            {% if 'user_id' in session %}
+                                <a href="{{ url_for('recipes') }}" class="btn delicious-btn">Explore Recipes</a>
+                            {% else %}
+                                <a href="{{ url_for('login') }}" class="btn delicious-btn">Get Started</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

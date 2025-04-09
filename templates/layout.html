@@ -35,12 +35,16 @@
                                 </div>
                                 <div class="classynav">
                                     <ul>
-                                        <li class="active"><a href="{{ url_for('home') }}">Home</a></li>
-                                        <li><a href="{{ url_for('login') }}">Login</a></li>
-                                        <li><a href="{{ url_for('signup') }}">Signup</a></li>
-                                        <li><a href="{{ url_for('categories') }}">Favourite</a></li>
-                                        <li><a href="receipe-post.html">Logout</a></li>
-                                        <li><a href="{{ url_for('profile') }}">Profile</a></li>
+                                        <li class="{{ 'active' if current_page == 'home' else '' }}"><a href="{{ url_for('home') }}">Home</a></li>
+                                        {% if 'user_id' in session %}
+                                            <li class="{{ 'active' if current_page == 'recipes' else '' }}"><a href="{{ url_for('recipes') }}">Recipes</a></li>
+                                            <li class="{{ 'active' if current_page == 'categories' else '' }}"><a href="{{ url_for('categories') }}">Favorites</a></li>
+                                            <li class="{{ 'active' if current_page == 'profile' else '' }}"><a href="{{ url_for('profile') }}">Profile</a></li>
+                                            <li class="{{ 'active' if current_page == 'logout' else '' }}"><a href="{{ url_for('logout') }}">Logout</a></li>
+                                        {% else %}
+                                            <li class="{{ 'active' if current_page == 'login' else '' }}"><a href="{{ url_for('login') }}">Login</a></li>
+                                            <li class="{{ 'active' if current_page == 'signup' else '' }}"><a href="{{ url_for('signup') }}">Signup</a></li>
+                                        {% endif %}
                                     </ul>
                                 </div>
                             </div>
