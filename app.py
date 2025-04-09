@@ -1,9 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import sqlite3
-
+import os
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Change this to a real secret key
-
+from werkzeug.utils import secure_filename
 
 # Database setup
 def init_db():
@@ -21,10 +21,15 @@ def init_db():
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS recipes (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            user_id INTEGER NOT NULL,
-            title TEXT NOT NULL,
-            ingredients TEXT NOT NULL,
-            instructions TEXT NOT NULL,
+            user_id INTEGER,
+            name TEXT,
+            cuisine TEXT,
+            meal_type TEXT,
+            dietary TEXT,
+            difficulty TEXT,
+            image_url TEXT,
+            ingredients TEXT,
+            steps TEXT,
             FOREIGN KEY (user_id) REFERENCES users(id)
         )
     ''')
@@ -89,35 +94,53 @@ def recipes():
 
     conn = sqlite3.connect('users.db')
     cursor = conn.cursor()
-    cursor.execute("SELECT title, ingredients, instructions FROM recipes WHERE user_id=?", (session['user_id'],))
+    cursor.execute("SELECT * FROM recipes WHERE user_id = ?", (session['user_id'],))
     recipes = cursor.fetchall()
     conn.close()
-
+    print("Fetched recipes:", recipes)
     return render_template('recipes.html', recipes=recipes)
 
 
-# Route for adding a recipe
 @app.route('/add_recipe', methods=['GET', 'POST'])
 def add_recipe():
     if 'user_id' not in session:
         return redirect(url_for('login'))
 
     if request.method == 'POST':
-        title = request.form['title']
+        name = request.form['name']
+        cuisine = request.form['cuisine']
+        meal_type = request.form['meal_type']
+        dietary = request.form['dietary']
+        difficulty = request.form['difficulty']
         ingredients = request.form['ingredients']
-        instructions = request.form['instructions']
+        steps = request.form['steps']
+        image = request.files.get('image')
 
+        # Handle image upload
+        image_url = ''
+        if image:
+            filename = secure_filename(image.filename)  # Fixed this line, previously `c` was here
+            upload_folder = os.path.join('static', 'uploads')
+            os.makedirs(upload_folder, exist_ok=True)
+            image_path = os.path.join(upload_folder, filename)
+            image.save(image_path)
+            image_url = '/' + image_path  # for browser use
+
+        # Insert into DB
         conn = sqlite3.connect('users.db')
         cursor = conn.cursor()
-        cursor.execute("INSERT INTO recipes (user_id, title, ingredients, instructions) VALUES (?, ?, ?, ?)",
-                       (session['user_id'], title, ingredients, instructions))
+        cursor.execute("""
+            INSERT INTO recipes 
+            (user_id, name, cuisine, meal_type, dietary, difficulty, image_url, ingredients, steps) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """, (
+            session['user_id'], name, cuisine, meal_type,
+            dietary, difficulty, image_url, ingredients, steps
+        ))
         conn.commit()
         conn.close()
 
-        return redirect(url_for('recipes'))
-
-    return render_template('add_recipe.html')
-
+    return redirect(url_for('recipes'))
 
 # Run the app
 if __name__ == "__main__":

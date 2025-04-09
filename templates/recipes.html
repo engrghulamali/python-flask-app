@@ -1,24 +1,120 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Recipes</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
-<body>
-    <h1>Your Recipes</h1>
-    <ul>
+{% extends 'layout.html' %}
+
+{% block title %}Your Recipes | Recipe App{% endblock %}
+
+{% block content %}
+    <div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Recommedned For You</h2>
+        <div class="col-md-4">
+            <!-- Search Bar -->
+            <input type="text" id="recipeSearch" class="form-control" placeholder="Search recipes..." onkeyup="searchRecipes()" />
+        </div>
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addRecipeModal">+ Add Recipe</button>
+    </div>
+
+  {% if recipes %}
+    <div class="row g-4" id="recipeList">
         {% for recipe in recipes %}
-            <li>
-                <strong>{{ recipe[0] }}</strong><br>
-                Ingredients: {{ recipe[1] }}<br>
-                Instructions: {{ recipe[2] }}
-            </li>
-        {% else %}
-            <p>No recipes found.</p>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm recipe-card" data-bs-toggle="modal" data-bs-target="#recipeModal{{ recipe[0] }}">
+                    <img src="{{ recipe[7] or url_for('static', filename='img/default-recipe.jpg') }}" class="card-img-top" alt="{{ recipe[2] }}" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ recipe[2] }}</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recipe Modal -->
+            <div class="modal fade" id="recipeModal{{ recipe[0] }}" tabindex="-1" aria-labelledby="recipeModalLabel{{ recipe[0] }}" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="recipeModalLabel{{ recipe[0] }}">{{ recipe[2] }}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="recipe-detail-img">
+                                <img src="{{ recipe[7] or url_for('static', filename='img/default-recipe.jpg') }}" class="img-fluid" alt="{{ recipe[2] }}">
+                            </div>
+                            <h6>Cuisine: </h6>
+                            <p class="mb-4">{{ recipe[3] }}</p>
+                            <h6>Meal Type: </h6>
+                            <p class="mb-4">{{ recipe[4] }}</p>
+                            <h6>Dietary: </h6>
+                            <p class="mb-4">{{ recipe[5] }}</p>
+                            <h6>Difficulty:</h6>
+                            <p class="mb-4">{{ recipe[6] }}</p>
+                            <h6>Ingredients:</h6>
+                            <p class="mb-4">{{ recipe[8] }}</p>
+                            <h6>Steps:</h6>
+                            <p>{{ recipe[9] }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         {% endfor %}
-    </ul>
-    <a href="{{ url_for('add_recipe') }}">Add New Recipe</a>
-</body>
-</html>
+    </div>
+{% else %}
+    <p>No recipes found.</p>
+{% endif %}
+
+</div>
+
+<!-- Add Recipe Modal -->
+<!-- Add Recipe Modal -->
+<div class="modal fade" id="addRecipeModal" tabindex="-1" aria-labelledby="addRecipeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <form method="POST" enctype="multipart/form-data" class="modal-content" action="{{ url_for('add_recipe') }}">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addRecipeModalLabel">Add New Recipe</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body row g-3">
+          <div class="col-md-6 mt-4">
+            <label class="form-label">Recipe Name</label>
+            <input type="text" name="name" class="form-control" required>
+          </div>
+          <div class="col-md-6 mt-4">
+            <label class="form-label">Cuisine</label>
+            <input type="text" name="cuisine" class="form-control" required>
+          </div>
+          <div class="col-md-6 mt-4">
+            <label class="form-label">Meal Type</label>
+            <input type="text" name="meal_type" class="form-control" required>
+          </div>
+          <div class="col-md-6 mt-4">
+            <label class="form-label">Dietary Restrictions</label>
+            <input type="text" name="dietary" class="form-control" required>
+          </div>
+          <div class="col-md-6 mt-4">
+            <label class="form-label">Difficulty Level</label>
+            <select name="difficulty" class="form-select" required>
+              <option value="">Select</option>
+              <option>Easy</option>
+              <option>Medium</option>
+              <option>Hard</option>
+            </select>
+          </div>
+          <div class="col-md-6 mt-4">
+            <label class="form-label">Recipe Image</label>
+            <input type="file" name="image" accept="image/*" class="form-control" required>
+          </div>
+          <div class="col-12 mt-4">
+            <label class="form-label">Ingredients</label>
+            <textarea name="ingredients" class="form-control" rows="2" required></textarea>
+          </div>
+          <div class="col-12 mt-4">
+            <label class="form-label">Steps</label>
+            <textarea name="steps" class="form-control" rows="3" required></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Save Recipe</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+{% endblock %}
