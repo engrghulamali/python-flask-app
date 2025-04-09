@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% block title %}Manage Categories{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Categories</h2>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCategoryModal">+ Add Category</button>
+    </div>
+
+    <input type="text" id="categorySearch" class="form-control mb-4" placeholder="Search categories..." onkeyup="searchCategories()">
+
+    <div id="categoryList">
+        {% for category in categories %}
+            <div class="category-item">{{ category[1] }}</div>
+        {% else %}
+            <p>No categories found.</p>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="addCategoryModal" tabindex="-1" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form method="POST" class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addCategoryModalLabel">Add Category</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" name="category_name" class="form-control" placeholder="Category name" required>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+function searchCategories() {
+    let input = document.getElementById("categorySearch").value.toLowerCase();
+    let items = document.getElementById("categoryList").children;
+    for (let item of items) {
+        let text = item.textContent.toLowerCase();
+        item.style.display = text.includes(input) ? "" : "none";
+    }
+}
+</script>
+{% endblock %}

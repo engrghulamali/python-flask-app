@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block title %}Profile | Recipe App{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center flex-grow-1" style="min-height: 80vh;">
+  <div class="profile-card shadow rounded-4 p-4 p-md-5 bg-white" style="max-width: 600px; width: 100%;">
+    <div class="text-center mb-4">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjc92kXM1PmWnma9cIoB2brj02XIdg_UxroPVQx6g0LycGUVHpyO5GOCPhj4IHCLLfWTE&usqp=CAU" 
+           alt="Avatar" class="rounded-circle shadow" width="120" height="120">
+      <h3 class="mt-3 mb-0">{{ user[1] }}</h3>
+      <p class="text-muted mb-1">Registered User</p>
+    </div>
+
+    <hr class="mb-4">
+
+    <div class="row gy-3">
+      <div class="col-12">
+        <label class="form-label fw-semibold">Email</label>
+        <div class="form-control bg-light">{{ user[2] }}</div>
+      </div>
+      <div class="col-12 mt-4">
+        <label class="form-label fw-semibold">Phone</label>
+        <div class="form-control bg-light">{{ user[3] }}</div>
+      </div>
+      <div class="col-12 mt-4">
+        <label class="form-label fw-semibold">Password</label>
+        <div class="form-control bg-light">{{ user[4] }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

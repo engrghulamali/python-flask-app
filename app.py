@@ -33,6 +33,14 @@ def init_db():
             FOREIGN KEY (user_id) REFERENCES users(id)
         )
     ''')
+
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS categories (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL UNIQUE
+        )
+    ''')
+
     conn.commit()
     conn.close()
 
@@ -141,6 +149,46 @@ def add_recipe():
         conn.close()
 
     return redirect(url_for('recipes'))
+
+@app.route('/categories', methods=['GET', 'POST'])
+def categories():
+    conn = sqlite3.connect('users.db')
+    cursor = conn.cursor()
+
+    if request.method == 'POST':
+        category_name = request.form.get('category_name')
+        if category_name:
+            try:
+                cursor.execute("INSERT INTO categories (name) VALUES (?)", (category_name,))
+                conn.commit()
+            except sqlite3.IntegrityError:
+                pass  # handle duplicate if needed
+
+    cursor.execute("SELECT * FROM categories ORDER BY name ASC")
+    categories = cursor.fetchall()
+    conn.close()
+    return render_template('categories.html', categories=categories)
+
+@app.route('/profile')
+def profile():
+    user = get_user()  # Fetch user details using the function
+    if user:
+        # If the user exists, pass the data to the template
+        return render_template('profile.html', user=user)
+    else:
+        return redirect(url_for('login'))  # Redirect to login if no user is found
+
+def get_user():
+    if 'user_id' in session:
+        user_id = session['user_id']
+        conn = sqlite3.connect('users.db')
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM users WHERE id=?", (user_id,))
+        user = cursor.fetchone()
+        conn.close()
+        return user
+    return None  # Return None if no user is found
+
 
 # Run the app
 if __name__ == "__main__":

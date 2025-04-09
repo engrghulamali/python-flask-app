@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{{ title }}</title>
-    <link rel="icon" href="{{ url_for('static', filename='img/core-img/favicon.ico') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/custom-style.css') }}">
 </head>
 
@@ -15,7 +15,7 @@
     <div class="page-wrapper">
         <div id="preloader">
             <i class="circle-preloader"></i>
-            <img src="{{ url_for('static', filename='img/core-img/salad.png') }}" alt="" >
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="" >
         </div>
 
 
@@ -38,15 +38,10 @@
                                         <li class="active"><a href="{{ url_for('home') }}">Home</a></li>
                                         <li><a href="{{ url_for('login') }}">Login</a></li>
                                         <li><a href="{{ url_for('signup') }}">Signup</a></li>
-                                        <li><a href="receipe-post.html">Favourite</a></li>
+                                        <li><a href="{{ url_for('categories') }}">Favourite</a></li>
                                         <li><a href="receipe-post.html">Logout</a></li>
-                                        <li><a href="contact.html">Profile</a></li>
+                                        <li><a href="{{ url_for('profile') }}">Profile</a></li>
                                     </ul>
-
-                                    <div class="search-btn">
-                                        <i class="fa fa-search" aria-hidden="true"></i>
-                                    </div>
-
                                 </div>
                             </div>
                         </nav>
@@ -62,8 +57,8 @@
     </main>
 
     <!-- Footer -->
-    <footer class="text-center text-lg-center bg-light text-muted">
-      <p>&copy; {{ year or "2025" }} Recipe App. All rights reserved.</p>
+    <footer class="text-center text-lg-center text-muted text-white">
+      <p class="text-white"><b>&copy; {{ year or "2025" }} Recipe App. All rights reserved.</b></p>
     </footer>
   </div>
   <!-- Bootstrap JS -->

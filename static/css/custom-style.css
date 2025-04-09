@@ -172,7 +172,7 @@ img {
   right: 0;
   z-index: 5000; }
   #preloader img {
-    width: 30px;
+    width: 60px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -181,10 +181,10 @@ img {
     z-index: 10; }
   #preloader .circle-preloader {
     display: block;
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 100px;
     border: 2px solid #ccc;
-    border-bottom-color: #1c8314;
+    border-bottom-color: #808080;
     border-radius: 50%;
     position: absolute;
     top: 0;
@@ -244,7 +244,7 @@ img {
   padding-right: 0;
   width: 30px;
   height: 30px;
-  background-color: #40ba37;
+  background-color: #887CCF;
   line-height: 30px;
   text-align: center;
   position: absolute;
@@ -287,7 +287,7 @@ textarea:focus {
 
 /* ScrollUp */
 #scrollUp {
-  background-color: #40ba37;
+  background-color: #887CCF;
   border-radius: 0;
   bottom: 60px;
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
@@ -314,7 +314,7 @@ textarea:focus {
   height: 60px;
   color: #ffffff;
   border: none;
-  border-left: 3px solid #1c8314;
+  border-left: 3px solid #808080;
   border-radius: 0;
   padding: 0 30px;
   font-size: 16px;
@@ -323,30 +323,30 @@ textarea:focus {
   -webkit-transition-duration: 500ms;
   transition-duration: 500ms;
   text-transform: capitalize;
-  background-color: #40ba37; }
+  background-color: #887CCF; }
   .delicious-btn.active, .delicious-btn:hover, .delicious-btn:focus {
     font-size: 16px;
     font-weight: 600;
     color: #ffffff;
-    background-color: #1c8314;
-    border-color: #40ba37; }
+    background-color: #808080;
+    border-color: #887CCF; }
   .delicious-btn.btn-2 {
-    background-color: #1c8314;
-    border-color: #40ba37; }
+    background-color: #808080;
+    border-color: #887CCF; }
     .delicious-btn.btn-2.active, .delicious-btn.btn-2:hover, .delicious-btn.btn-2:focus {
-      background-color: #40ba37;
-      border-color: #1c8314; }
+      background-color: #887CCF;
+      border-color: #808080; }
   .delicious-btn.btn-3 {
     background-color: #474747;
-    border-color: #1c8314; }
+    border-color: #808080; }
     .delicious-btn.btn-3.active, .delicious-btn.btn-3:hover, .delicious-btn.btn-3:focus {
-      background-color: #40ba37;
-      border-color: #1c8314; }
+      background-color: #887CCF;
+      border-color: #808080; }
   .delicious-btn.btn-4 {
     background-color: transparent;
-    border: 3px solid #40ba37;
+    border: 3px solid #887CCF;
     line-height: 53px;
-    color: #40ba37; }
+    color: #887CCF; }
     @media only screen and (max-width: 767px) {
       .delicious-btn.btn-4 {
         height: 40px;
@@ -354,7 +354,7 @@ textarea:focus {
     .delicious-btn.btn-4.active, .delicious-btn.btn-4:hover, .delicious-btn.btn-4:focus {
       line-height: 53px;
       color: #ffffff;
-      background-color: #40ba37; }
+      background-color: #887CCF; }
       @media only screen and (max-width: 767px) {
         .delicious-btn.btn-4.active, .delicious-btn.btn-4:hover, .delicious-btn.btn-4:focus {
           height: 40px;
@@ -372,7 +372,7 @@ textarea:focus {
   z-index: 200;
   top: -80px;
   left: 0;
-  background-color: #40ba37;
+  background-color: #887CCF;
   -webkit-transition-duration: 700ms;
   transition-duration: 700ms; }
   .search-wrapper form {
@@ -452,7 +452,7 @@ textarea:focus {
               color: #b6b6b6;
               font-style: italic; }
               .header-area .top-header-area .breaking-news .ticker ul li a:hover, .header-area .top-header-area .breaking-news .ticker ul li a:focus {
-                color: #40ba37; }
+                color: #887CCF; }
     .header-area .top-header-area .top-social-info a {
       display: inline-block;
       color: #b6b6b6;
@@ -461,7 +461,7 @@ textarea:focus {
       .header-area .top-header-area .top-social-info a:last-child {
         margin-right: 0; }
       .header-area .top-header-area .top-social-info a:hover, .header-area .top-header-area .top-social-info a:focus, .header-area .top-header-area .top-social-info a.active {
-        color: #40ba37; }
+        color: #887CCF; }
   .header-area .delicious-main-menu {
     position: relative;
     width: 100%;
@@ -493,14 +493,14 @@ textarea:focus {
         .header-area .delicious-main-menu .classy-navbar .classynav > ul > li > a:hover, .header-area .delicious-main-menu .classy-navbar .classynav > ul > li > a:focus {
           font-size: 14px;
           color: #ffffff;
-          background-color: #40ba37;
-          border-bottom: 3px solid #1c8314; }
+          background-color: #887CCF;
+          border-bottom: 3px solid #808080; }
           .header-area .delicious-main-menu .classy-navbar .classynav > ul > li > a:hover::after, .header-area .delicious-main-menu .classy-navbar .classynav > ul > li > a:focus::after {
             color: #ffffff; }
       .header-area .delicious-main-menu .classy-navbar .classynav > ul > li.active > a {
         color: #ffffff;
-        background-color: #40ba37;
-        border-bottom: 3px solid #1c8314; }
+        background-color: #887CCF;
+        border-bottom: 3px solid #808080; }
         .header-area .delicious-main-menu .classy-navbar .classynav > ul > li.active > a::after {
           color: #ffffff; }
     .header-area .delicious-main-menu .classynav .search-btn {
@@ -513,7 +513,7 @@ textarea:focus {
         -webkit-transition-duration: 500ms;
         transition-duration: 500ms; }
       .header-area .delicious-main-menu .classynav .search-btn:hover i, .header-area .delicious-main-menu .classynav .search-btn:focus i {
-        color: #40ba37; }
+        color: #887CCF; }
       @media only screen and (min-width: 992px) and (max-width: 1199px) {
         .header-area .delicious-main-menu .classynav .search-btn {
           margin-left: 50px; } }
@@ -557,7 +557,7 @@ textarea:focus {
       position: relative;
       z-index: 1;
       padding: 60px 50px;
-      border-left: 3px solid #40ba37;
+      border-left: 3px solid #887CCF;
       background-color: rgb(23 22 16 / 84%)
     }
       @media only screen and (max-width: 767px) {
@@ -594,7 +594,7 @@ textarea:focus {
     visibility: hidden;
     -webkit-transition-duration: 500ms;
     transition-duration: 500ms;
-    border-bottom: 3px solid #1c8314; }
+    border-bottom: 3px solid #808080; }
     @media only screen and (max-width: 767px) {
       .hero-slides .owl-prev,
       .hero-slides .owl-next {
@@ -620,7 +620,7 @@ textarea:focus {
       color: #ffffff;
       margin-right: 10px; }
       .hero-slides .owl-dots .owl-dot.active {
-        color: #1c8314; }
+        color: #808080; }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .breakpoint-on .classynav ul li.cn-dropdown-item > a::after,
@@ -688,7 +688,7 @@ textarea:focus {
   position: relative;
   z-index: 1; }
   .single-best-receipe-area img {
-    border-bottom: 3px solid #40ba37; }
+    border-bottom: 3px solid #887CCF; }
   .single-best-receipe-area .receipe-content {
     padding-top: 30px;
     text-align: center; }
@@ -699,7 +699,7 @@ textarea:focus {
       -webkit-transition-duration: 500ms;
       transition-duration: 500ms; }
       .single-best-receipe-area .receipe-content h5:hover, .single-best-receipe-area .receipe-content h5:focus {
-        color: #40ba37; }
+        color: #887CCF; }
     .single-best-receipe-area .receipe-content .ratings i {
       font-size: 11px;
       color: #fbb710;
@@ -755,7 +755,7 @@ textarea:focus {
   .single-small-receipe-area .receipe-content span {
     font-size: 12px;
     display: block;
-    color: #40ba37; }
+    color: #887CCF; }
   .single-small-receipe-area .receipe-content a {
     display: block; }
     .single-small-receipe-area .receipe-content a h5 {
@@ -768,7 +768,7 @@ textarea:focus {
         .single-small-receipe-area .receipe-content a h5 {
           font-size: 16px; } }
       .single-small-receipe-area .receipe-content a h5:hover, .single-small-receipe-area .receipe-content a h5:focus {
-        color: #40ba37; }
+        color: #887CCF; }
   .single-small-receipe-area .receipe-content .ratings i {
     font-size: 11px;
     color: #fbb710;
@@ -783,7 +783,7 @@ textarea:focus {
 .quote-area {
   position: relative;
   z-index: 1;
-  border: 10px solid #40ba37;
+  border: 10px solid #887CCF;
   padding: 40px 25px;
   margin-bottom: 80px; }
   .quote-area span {
@@ -791,7 +791,7 @@ textarea:focus {
     font-style: italic;
     margin-bottom: 30px;
     display: block;
-    color: #40ba37;
+    color: #887CCF;
     line-height: 1; }
   .quote-area h4 {
     font-size: 24px;
@@ -808,7 +808,7 @@ textarea:focus {
     margin-bottom: 50px; }
   .quote-area .date-comments .date {
     font-size: 12px;
-    color: #40ba37; }
+    color: #887CCF; }
   .quote-area .date-comments .comments {
     font-size: 12px;
     color: #9b9b9b; }
@@ -837,7 +837,7 @@ textarea:focus {
     color: #9b9b9b;
     font-size: 12px;
     font-style: italic;
-    border-left: 3px solid #1c8314;
+    border-left: 3px solid #808080;
     padding: 0 20px;
     margin-bottom: 25px; }
   .newsletter-form p {
@@ -872,7 +872,7 @@ textarea:focus {
     .single-blog-area .blog-thumbnail .post-date {
       width: 75px;
       height: 100px;
-      background-color: #40ba37;
+      background-color: #887CCF;
       position: absolute;
       top: 20px;
       left: 20px;
@@ -896,7 +896,7 @@ textarea:focus {
           font-weight: 700;
           display: block; }
       .single-blog-area .blog-thumbnail .post-date:hover, .single-blog-area .blog-thumbnail .post-date:focus {
-        background-color: #1c8314; }
+        background-color: #808080; }
   .single-blog-area .blog-content {
     position: relative;
     z-index: 1;
@@ -906,7 +906,7 @@ textarea:focus {
       color: #474747;
       margin-bottom: 10px; }
       .single-blog-area .blog-content .post-title:hover, .single-blog-area .blog-content .post-title:focus {
-        color: #40ba37; }
+        color: #887CCF; }
     .single-blog-area .blog-content .meta-data {
       font-size: 12px;
       color: #a4a4a4;
@@ -916,7 +916,7 @@ textarea:focus {
         font-size: 12px;
         color: #a4a4a4; }
         .single-blog-area .blog-content .meta-data a:hover, .single-blog-area .blog-content .meta-data a:focus {
-          color: #40ba37; }
+          color: #887CCF; }
 
 .single-widget {
   position: relative;
@@ -931,7 +931,7 @@ textarea:focus {
       padding: 5px 0;
       color: #797979; }
       .single-widget .list li a:hover, .single-widget .list li a:focus {
-        color: #40ba37; }
+        color: #887CCF; }
 
 .pagination {
   position: relative;
@@ -944,10 +944,10 @@ textarea:focus {
     color: #474747; }
     .pagination .page-link:hover, .pagination .page-link:focus {
       background-color: transparent;
-      color: #40ba37; }
+      color: #887CCF; }
   .pagination .page-item.active .page-link {
     background-color: transparent;
-    color: #40ba37; }
+    color: #887CCF; }
 
 /* :: 15.0 Receipe Area */
 .receipe-post-search {
@@ -989,7 +989,7 @@ textarea:focus {
     visibility: hidden;
     -webkit-transition-duration: 500ms;
     transition-duration: 500ms;
-    border-bottom: 3px solid #1c8314; }
+    border-bottom: 3px solid #808080; }
     @media only screen and (max-width: 767px) {
       .receipe-slider .owl-prev,
       .receipe-slider .owl-next {
@@ -1014,7 +1014,7 @@ textarea:focus {
     .receipe-headline h2 {
       font-size: 24px; } }
 .receipe-headline .receipe-duration {
-  border-left: 3px solid #40ba37;
+  border-left: 3px solid #887CCF;
   padding: 15px; }
   .receipe-headline .receipe-duration h6 {
     font-size: 15px;
@@ -1073,7 +1073,7 @@ textarea:focus {
   width: 20px;
   height: 20px; }
 .ingredients .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
-  background-color: #40ba37; }
+  background-color: #887CCF; }
 
 /* :: 17.0 Breadcumb Area CSS */
 .breadcumb-area {
@@ -1119,9 +1119,9 @@ textarea:focus {
   z-index: 1; }
   .single-contact-information h6 {
     font-size: 14px;
-    border-bottom: 2px solid #40ba37;
+    border-bottom: 2px solid #887CCF;
     display: inline-block;
-    color: #40ba37; }
+    color: #887CCF; }
 
 .contact-form-area .form-control {
   height: 52px;
@@ -1137,7 +1137,7 @@ textarea:focus {
   -webkit-transition-duration: 500ms;
   transition-duration: 500ms; }
   .contact-form-area .form-control:focus {
-    border-left: 3px solid #40ba37;
+    border-left: 3px solid #887CCF;
     box-shadow: none; }
 .contact-form-area textarea.form-control {
   height: 200px;
@@ -1165,7 +1165,7 @@ textarea:focus {
   .single-cool-fact h3 {
     font-size: 48px;
     margin-bottom: 10px;
-    color: #40ba37;
+    color: #887CCF;
     font-weight: 700; }
   .single-cool-fact h6 {
     font-size: 18px;
@@ -1185,9 +1185,9 @@ textarea:focus {
   text-transform: uppercase; }
   .single-accordion h6 a {
     border-radius: 0;
-    background-color: #40ba37;
+    background-color: #887CCF;
     color: #ffffff;
-    border-left: 3px solid #1c8314;
+    border-left: 3px solid #808080;
     display: block;
     margin: 0;
     padding: 20px 60px 20px 20px;
@@ -1208,7 +1208,7 @@ textarea:focus {
     .single-accordion h6 a.collapsed {
       background-color: #f3f5f8;
       color: #9b9b9b;
-      border-left: 3px solid #40ba37; }
+      border-left: 3px solid #887CCF; }
       .single-accordion h6 a.collapsed span.accor-close {
         opacity: 0;
         -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
@@ -1235,7 +1235,7 @@ textarea:focus {
       background-color: #f3f5f8;
       color: #9b9b9b;
       border: none;
-      border-left: 3px solid #40ba37;
+      border-left: 3px solid #887CCF;
       padding: 0 15px;
       height: 50px;
       line-height: 50px;
@@ -1251,9 +1251,9 @@ textarea:focus {
         .delicious-tabs-content .nav-tabs .nav-link {
           padding: 0 10px; } }
       .delicious-tabs-content .nav-tabs .nav-link.active {
-        background-color: #40ba37;
+        background-color: #887CCF;
         color: #ffffff;
-        border-left: 3px solid #1c8314; }
+        border-left: 3px solid #808080; }
   .delicious-tabs-content .tab-content h6 {
     font-size: 18px; }
 
@@ -1282,11 +1282,12 @@ textarea:focus {
 footer {
   margin-top: auto;
   padding: 1rem;
-  background-color: #f8f9fa; /* Light background */
-  color: #6c757d; /* Muted text */
+  background-color: #887CCF !important; /* Light background */
+
+  color: #ffffff; /* Muted text */
   text-align: center;
   font-size: 0.9rem;
-  border-top: 1px solid #e7e7e7;
+  border-top: 1px solid #887CCF;
 }
 
 .page-wrapper {
@@ -1348,5 +1349,47 @@ main {
 }
 
 #recipeSearch:focus {
-  border-color: #28a745; /* Green border on focus */
+  border-color: #887CCF; /* Green border on focus */
 }
+
+body {
+  background: linear-gradient(135deg, #f3f0ff, #e6f0ff, #fef9e7);
+  background-size: 300% 300%;
+  animation: lightBgMove 20s ease infinite;
+  color: #333; /* Professional dark text */
+}
+
+@keyframes lightBgMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.category-item {
+  padding: 1rem 1.5rem;
+  border: 1px solid #dee2e6;
+  border-radius: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.category-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#categoryList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+
