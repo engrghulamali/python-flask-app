@@ -6,34 +6,57 @@
 <div class="container my-5">
     <h2 class="mb-4">Category: {{ category_name }}</h2>
 
-    <form method="get" action="">
-        <input type="text" name="q" value="{{ search_query }}" class="form-control mb-3" placeholder="Search recipes...">
-        <button type="submit" class="btn btn-outline-primary mb-4">Search</button>
-    </form>
+    <div class="mb-4">
+        <div class="input-group shadow-sm rounded">
+            <input type="text" id="recipeSearch" class="form-control border-start-0" placeholder="Search recipes..." autofocus>
+        </div>
+    </div>
+    
 
     {% if recipes %}
-        <div class="row">
-            {% for recipe in recipes %}
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        {% if recipe[7] %}
-                            <img src="{{ recipe[7] }}" class="card-img-top" alt="Recipe Image">
-                        {% endif %}
-                        <div class="card-body">
-                            <h5 class="card-title">{{ recipe[2] }}</h5>
-                            <p class="card-text"><strong>Difficulty:</strong> {{ recipe[6] }}</p>
-                            <p class="card-text"><strong>Cuisine:</strong> {{ recipe[3] }}</p>
-                            <p class="card-text"><strong>Meal Type:</strong> {{ recipe[4] }}</p>
-                            <form method="POST" action="{{ url_for('remove_recipe_from_category', category_id=category_id, recipe_id=recipe[0]) }}">
-                                <button type="submit" class="btn btn-danger btn-sm mt-2">Remove From Favourite</button>
-                            </form>
-                        </div>
+    <div class="row" id="recipeList">
+        {% for recipe in recipes %}
+            <div class="col-md-4 mb-4 recipe-card">
+                <div class="card h-100">
+                    {% if recipe[7] %}
+                        <img src="{{ recipe[7] }}" class="card-img-top" alt="Recipe Image">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ recipe[2] }}</h5>
+                        <p class="card-text"><strong>Difficulty:</strong> {{ recipe[6] }}</p>
+                        <p class="card-text"><strong>Cuisine:</strong> {{ recipe[3] }}</p>
+                        <p class="card-text"><strong>Meal Type:</strong> {{ recipe[4] }}</p>
+                        <form method="POST" action="{{ url_for('remove_recipe_from_category', category_id=category_id, recipe_id=recipe[0]) }}">
+                            <button type="submit" class="btn btn-danger btn-sm mt-2">Remove From Favourite</button>
+                        </form>
                     </div>
                 </div>
-            {% endfor %}
-        </div>
+            </div>
+        {% endfor %}
+    </div>
+    
     {% else %}
         <p>No recipes found in this category.</p>
     {% endif %}
 </div>
+
+<script>
+    document.getElementById('recipeSearch').addEventListener('keyup', function () {
+        let query = this.value.toLowerCase();
+        let cards = document.querySelectorAll('.recipe-card');
+    
+        cards.forEach(card => {
+            let title = card.querySelector('.card-title').textContent.toLowerCase();
+            let cuisine = card.querySelector('.card-text:nth-child(3)').textContent.toLowerCase();
+            let mealType = card.querySelector('.card-text:nth-child(4)').textContent.toLowerCase();
+            
+            if (title.includes(query) || cuisine.includes(query) || mealType.includes(query)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+</script>
+    
 {% endblock %}
