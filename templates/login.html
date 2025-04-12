@@ -6,6 +6,16 @@
 <div class="d-flex justify-content-center align-items-center flex-grow-1" style="min-height: 80vh;">
   <div class="login-container shadow rounded p-4 p-md-5 bg-white" style="max-width: 500px; width: 100%;">
     <h2 class="text-center mb-4">Login</h2>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul>
+        {% for message in messages %}
+          <li class="text-danger mb-2">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
     <form method="POST">
       <div class="mb-3">
         <label for="email" class="form-label">Email</label>

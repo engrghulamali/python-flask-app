@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 import sqlite3
 import os
 app = Flask(__name__)
@@ -7,6 +7,10 @@ from werkzeug.utils import secure_filename
 
 # Database setup
 def init_db():
+    # if os.path.exists('users.db'):
+    # os.remove('users.db')
+    # print("Existing database deleted. Starting fresh.")
+
     conn = sqlite3.connect('users.db')
     cursor = conn.cursor()
     cursor.execute('''
@@ -106,8 +110,8 @@ def login():
             session['user_id'] = user[0]  # Store the user_id in session
             session['user_name'] = user[1]  # Store the user_name in session
             return redirect(url_for('recipes'))
-        else:
-            return 'Invalid credentials. Please try again.'
+        # else:
+            # flash('Login failed. Please check your email and password.')
 
     return render_template('login.html')
 
@@ -127,7 +131,7 @@ def recipes():
     categories = cursor.fetchall()
 
     conn.close()
-    print("Fetched recipes:", recipes)
+  
     return render_template('recipes.html', recipes=recipes, categories=categories, title='Recipes')
 
 
@@ -169,7 +173,7 @@ def add_recipe():
         ))
         conn.commit()
         conn.close()
-
+        # flash("Recipe added successfully!", "success")
     return redirect(url_for('recipes'))
 
 @app.route('/categories', methods=['GET', 'POST'])

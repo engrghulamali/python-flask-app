@@ -8,6 +8,15 @@
 </head>
 <body>
     <h1>Add a New Recipe</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li class="text-danger mb-2">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
     <form method="POST">
         <label for="title">Recipe Title:</label>
         <input type="text" name="title" required>
