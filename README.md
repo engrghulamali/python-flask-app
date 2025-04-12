@@ -1,6 +1,3 @@
-Great! Here's your updated `README.md` file with your actual GitHub repository URL:
-
-```markdown
 # Recipe Management Flask Application
 
 A simple Flask web application that allows users to sign up, log in, add recipes, manage categories, and mark recipes as favourites.
@@ -74,26 +71,8 @@ python -c "from app import init_db; init_db()"
 
 ### 5. Run the App
 
-#### 🐧 Linux / 🍎 macOS
-
 ```bash
-export FLASK_APP=app.py
-export FLASK_ENV=development
-flask run
-```
-
-#### 🪟 Windows
-
-```bash
-set FLASK_APP=app.py
-set FLASK_ENV=development
-flask run
-```
-
-Or simply:
-
-```bash
-python app.py
+python3 app.py
 ```
 
 ### 6. Open in Browser
@@ -142,26 +121,3 @@ Visit: [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
 ---
 
-## 🧪 Troubleshooting
-
-### ❌ Module Not Found
-
-Install missing dependencies:
-
-```bash
-pip install Flask werkzeug
-```
-
-### 🔐 Permissions (Linux/macOS)
-
-```bash
-chmod -R 755 /your/project/path
-```
-
-### 🔒 Windows SSL/TLS Issues
-
-```bash
-set FLASK_RUN_CERT=adhoc
-```
-
----
